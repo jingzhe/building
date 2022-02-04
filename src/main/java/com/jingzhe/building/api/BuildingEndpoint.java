@@ -44,6 +44,7 @@ public interface BuildingEndpoint {
                     )
             }
     )
+    @HeaderApiParams
     @PostMapping(
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE
@@ -74,6 +75,7 @@ public interface BuildingEndpoint {
                     )
             }
     )
+    @HeaderApiParams
     @PutMapping(
             value = "/{" + BUILDING_ID_PATH_VARIABLE + "}",
             consumes = APPLICATION_JSON_VALUE,
@@ -105,6 +107,7 @@ public interface BuildingEndpoint {
                     )
             }
     )
+    @HeaderApiParams
     @DeleteMapping(
             value = "/{" + BUILDING_ID_PATH_VARIABLE + "}"
     )

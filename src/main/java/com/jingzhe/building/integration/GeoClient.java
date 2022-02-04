@@ -35,7 +35,7 @@ public class GeoClient {
                         .build())
                 .retrieve()
                 .bodyToMono(GeoData.class)
-                .transformDeferred(webClientErrorHandler.transformWebClientErrorAndDelay(circuitBreaker, buildingProperties.getCircuit()));
+                .transformDeferred(webClientErrorHandler.transformWebClientErrorAndDelay(circuitBreaker, buildingProperties.getGeoCircuit()));
     }
 
 }

@@ -18,9 +18,17 @@ public class BuildingProperties {
     @NotBlank
     String geoPath;
 
+    @NotNull
+    URL authBaseUrl;
+
+    @NotBlank
+    String authPath;
+
     @NotBlank
     String geoApiKey;
 
-    CircuitProperties circuit;
+    CircuitProperties geoCircuit;
+
+    CircuitProperties authCircuit;
 
 }

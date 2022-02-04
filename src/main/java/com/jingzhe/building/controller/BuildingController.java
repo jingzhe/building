@@ -11,12 +11,8 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
-public class BuildingController implements BuildingEndpoint {
+public record BuildingController(BuildingService buildingService) implements BuildingEndpoint {
     
-    private final BuildingService buildingService;
-
-
     @Override
     public Flux<Building> create(List<Building> buildings) {
         return buildingService.create(buildings);
@@ -24,11 +20,11 @@ public class BuildingController implements BuildingEndpoint {
 
     @Override
     public Mono<Building> update(String id, Building building) {
-        return null;
+        return buildingService.update(id, building);
     }
 
     @Override
     public Mono<Void> delete(String id) {
-        return null;
+        return buildingService.delete(id);
     }
 }

@@ -24,7 +24,20 @@ public class BuildingConfig {
     @Bean("circuitBreaker_geo")
     public CircuitBreaker circuitBreakerGeo() {
         return CircuitBreakerFactory.fromCircuitProperties(properties.getGeoBaseUrl().getHost(),
-                properties.getCircuit());
+                properties.getGeoCircuit());
+    }
+
+    @Bean("webClient_auth")
+    public WebClient webClientAuth(WebClient.Builder webClientBuilder) {
+        return webClientBuilder
+                .baseUrl(properties.getAuthBaseUrl().toString())
+                .build();
+    }
+
+    @Bean("circuitBreaker_auth")
+    public CircuitBreaker circuitBreakerAuth() {
+        return CircuitBreakerFactory.fromCircuitProperties(properties.getAuthBaseUrl().getHost(),
+                properties.getGeoCircuit());
     }
 
     @Bean
