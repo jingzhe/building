@@ -1,15 +1,12 @@
 package com.jingzhe.building.integration;
 
-import com.jingzhe.building.api.model.Building;
 import com.jingzhe.building.config.BuildingProperties;
 import com.jingzhe.building.exception.BuildingServiceException;
-import com.jingzhe.building.model.GeoData;
 import com.nimbusds.jose.jwk.JWKSet;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriComponents;
 import reactor.core.publisher.Mono;
 
 import java.text.ParseException;

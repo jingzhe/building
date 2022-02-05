@@ -1,5 +1,6 @@
 package com.jingzhe.building.security;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -9,7 +10,10 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
-public record TokenAuthManager(JwtBearerTokenVerifier jwtVerifier) implements ReactiveAuthenticationManager {
+@RequiredArgsConstructor
+public class TokenAuthManager implements ReactiveAuthenticationManager {
+
+    private final JwtBearerTokenVerifier jwtVerifier;
 
     @Override
     public Mono<Authentication> authenticate(Authentication authentication) {

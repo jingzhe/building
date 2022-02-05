@@ -2,22 +2,22 @@ package com.jingzhe.building.api.model;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import lombok.Value;
-import lombok.With;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.io.Serial;
 import java.io.Serializable;
 
-@Value
-@With
+@SuperBuilder
+@Data
+@NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Building implements Serializable {
+public class BuildingDataRequest implements Serializable {
     @Serial
     private static final long serialVersionUID = 7001955564540267263L;
-
-    String id;
 
     @NotBlank
     String name;
@@ -38,20 +38,4 @@ public class Building implements Serializable {
     String country;
 
     String description;
-
-    double longitude;
-
-    double latitude;
-
-    public static String getGeoQuery(Building building) {
-        return building.getStreet() +
-                " " +
-                building.getNumber() +
-                "," +
-                building.getCity() +
-                " " +
-                building.getPostCode() +
-                "," +
-                building.getCountry();
-    }
 }

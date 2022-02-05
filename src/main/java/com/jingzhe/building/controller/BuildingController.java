@@ -1,25 +1,45 @@
 package com.jingzhe.building.controller;
 
 import com.jingzhe.building.api.BuildingEndpoint;
-import com.jingzhe.building.api.model.Building;
+import com.jingzhe.building.api.model.BuildingDataRequest;
+import com.jingzhe.building.api.model.BuildingDataResponse;
+import com.jingzhe.building.model.BuildingInfo;
 import com.jingzhe.building.service.BuildingService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+@Slf4j
 @RestController
-public record BuildingController(BuildingService buildingService) implements BuildingEndpoint {
-    
+@RequiredArgsConstructor
+public class BuildingController implements BuildingEndpoint {
+
+    private final BuildingService buildingService;
+
     @Override
-    public Flux<Building> create(List<Building> buildings) {
+    public Flux<BuildingDataResponse> create(List<BuildingDataRequest> buildings) {
         return buildingService.create(buildings);
     }
 
     @Override
-    public Mono<Building> update(String id, Building building) {
+    public Flux<BuildingDataResponse> search(String name, String street, Integer number, String postCode, String city, String country, Integer limit, Integer offset) {
+        BuildingInfo buildingInfo = BuildingInfo.builder()
+                .name(name)
+                .street(street)
+                .number(number)
+                .postCode(postCode)
+                .city(city)
+                .country(country)
+                .build();
+        return buildingService.search(buildingInfo, limit);
+    }
+
+    @Override
+    public Mono<BuildingDataResponse> update(String id, BuildingDataRequest building) {
         return buildingService.update(id, building);
     }
 

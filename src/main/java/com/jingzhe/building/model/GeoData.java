@@ -14,7 +14,7 @@ import java.util.List;
 public class GeoData {
     @NotNull
     @Size(min = 1)
-    List<Feature> features;
+    private List<Feature> features;
 
     public double getLongitude() {
         return getCoordinates().get(0);
@@ -33,7 +33,7 @@ public class GeoData {
     @AllArgsConstructor
     public static class Feature {
         @NotNull
-        Geometry geometry;
+        private Geometry geometry;
     }
 
     @Data
@@ -41,6 +41,6 @@ public class GeoData {
     @AllArgsConstructor
     public static class Geometry {
         @Size(min = 2, max = 2, message = "Latitude and Longitude")
-        List<Double> coordinates;
+        private List<Double> coordinates;
     }
 }

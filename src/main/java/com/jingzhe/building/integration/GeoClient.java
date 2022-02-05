@@ -1,6 +1,6 @@
 package com.jingzhe.building.integration;
 
-import com.jingzhe.building.api.model.Building;
+import com.jingzhe.building.model.BuildingInfo;
 import com.jingzhe.building.config.BuildingProperties;
 import com.jingzhe.building.model.GeoData;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
@@ -26,11 +26,11 @@ public class GeoClient {
         this.buildingProperties = buildingProperties;
     }
 
-    public Mono<GeoData> getGeoInfo(Building building) {
+    public Mono<GeoData> getGeoInfo(BuildingInfo building) {
         return webClient
                 .get()
                 .uri(buildingProperties.getGeoPath(), uriBuilder -> uriBuilder
-                        .queryParam("text", Building.getGeoQuery(building))
+                        .queryParam("text", BuildingInfo.getGeoQuery(building))
                         .queryParam("apiKey", buildingProperties.getGeoApiKey())
                         .build())
                 .retrieve()
