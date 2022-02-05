@@ -1,0 +1,240 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "old_name": "Ula",
+        "city": "Oulu",
+        "county": "North Ostrobothnia",
+        "state": "Mainland Finland",
+        "country": "Finland",
+        "country_code": "fi",
+        "lon": 25.4716809,
+        "lat": 65.0118734,
+        "formatted": "Oulu, North Ostrobothnia, Finland",
+        "address_line1": "Oulu",
+        "address_line2": "North Ostrobothnia, Finland",
+        "category": "administrative",
+        "result_type": "city",
+        "rank": {
+          "importance": 0.6956933066940988,
+          "popularity": 5.071627600091595,
+          "confidence": 1,
+          "confidence_city_level": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "51d9a55714c0783940594f2ca688c2405040f00101f9014261290000000000c00208"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4716809,
+          65.0118734
+        ]
+      },
+      "bbox": [
+        24.1149326,
+        64.844412,
+        26.7715283,
+        65.5643522
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Oulu",
+        "housenumber": "11a",
+        "street": "Rautatienkatu",
+        "suburb": "Vaara",
+        "city": "Oulu",
+        "county": "North Ostrobothnia",
+        "state": "Mainland Finland",
+        "postcode": "90100",
+        "country": "Finland",
+        "country_code": "fi",
+        "lon": 25.4843355,
+        "lat": 65.0113317,
+        "formatted": "Rautatienkatu 11a, 90100 Oulu, Finland",
+        "address_line1": "Rautatienkatu 11a",
+        "address_line2": "90100 Oulu, Finland",
+        "result_type": "amenity",
+        "rank": {
+          "importance": 0.501742165798516,
+          "popularity": 4.186596889545497,
+          "confidence": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "51b4ca4c69fd7b3940591e3a98a8b9405040f00103f901c7123d0c00000000c002019203044f756c75"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4843355,
+          65.0113317
+        ]
+      },
+      "bbox": [
+        25.4793355,
+        65.0063317,
+        25.4893355,
+        65.0163317
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Oulun linja-autoasema",
+        "street": "Asematunneli",
+        "suburb": "Vaara",
+        "city": "Oulu",
+        "county": "North Ostrobothnia",
+        "state": "Mainland Finland",
+        "postcode": "90130",
+        "country": "Finland",
+        "country_code": "fi",
+        "lon": 25.48420980088452,
+        "lat": 65.0099443,
+        "formatted": "Oulun linja-autoasema, Asematunneli, 90130 Oulu, Finland",
+        "address_line1": "Oulun linja-autoasema",
+        "address_line2": "Asematunneli, 90130 Oulu, Finland",
+        "result_type": "amenity",
+        "rank": {
+          "importance": 0.30324803174625986,
+          "popularity": 4.169816603249403,
+          "confidence": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "51a2336b2cf57b39405906d26aeda2405040f00102f9016e5cde0100000000c002019203154f756c756e206c696e6a612d6175746f6173656d61"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.48420980088452,
+          65.0099443
+        ]
+      },
+      "bbox": [
+        25.4836365,
+        65.0097375,
+        25.4847832,
+        65.010151
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Oulu",
+        "street": "Asematunneli",
+        "suburb": "Vaara",
+        "city": "Oulu",
+        "county": "North Ostrobothnia",
+        "state": "Mainland Finland",
+        "postcode": "90130",
+        "country": "Finland",
+        "country_code": "fi",
+        "lon": 25.4832935,
+        "lat": 65.0105819,
+        "formatted": "Asematunneli, 90130 Oulu, Finland",
+        "address_line1": "Asematunneli",
+        "address_line2": "90130 Oulu, Finland",
+        "result_type": "amenity",
+        "rank": {
+          "importance": 0.11100000000000002,
+          "popularity": 4.167536415546996,
+          "confidence": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "518fde701fb97b3940597e9bb45fad405040f00103f901500c396a01000000c002019203044f756c75"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4832935,
+          65.0105819
+        ]
+      },
+      "bbox": [
+        25.4832435,
+        65.0105319,
+        25.4833435,
+        65.0106319
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Oulu railway station",
+        "housenumber": "11a",
+        "street": "Rautatienkatu",
+        "suburb": "Vaara",
+        "city": "Oulu",
+        "county": "North Ostrobothnia",
+        "state": "Mainland Finland",
+        "postcode": "90130",
+        "country": "Finland",
+        "country_code": "fi",
+        "lon": 25.48395988830311,
+        "lat": 65.01143625,
+        "formatted": "Oulu railway station, Rautatienkatu 11a, 90130 Oulu, Finland",
+        "address_line1": "Oulu railway station",
+        "address_line2": "Rautatienkatu 11a, 90130 Oulu, Finland",
+        "category": "building.transportation",
+        "result_type": "amenity",
+        "rank": {
+          "importance": 0.11100000000000002,
+          "popularity": 4.185109810609144,
+          "confidence": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "5172d694cbe47b3940594aef1b5fbb405040f00102f901db56480200000000c002019203144f756c75207261696c7761792073746174696f6e"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.48395988830311,
+          65.01143625
+        ]
+      },
+      "bbox": [
+        25.4835323,
+        65.0111649,
+        25.4844639,
+        65.0116927
+      ]
+    }
+  ],
+  "query": {
+    "text": "Oulu"
+  }
+}

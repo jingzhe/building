@@ -1,5 +1,6 @@
 package com.jingzhe.building.integration;
 
+import com.jingzhe.building.exception.GeoIntegrationException;
 import com.jingzhe.building.model.BuildingInfo;
 import com.jingzhe.building.config.BuildingProperties;
 import com.jingzhe.building.model.GeoData;
@@ -35,7 +36,8 @@ public class GeoClient {
                         .build())
                 .retrieve()
                 .bodyToMono(GeoData.class)
-                .transformDeferred(webClientErrorHandler.transformWebClientErrorAndDelay(circuitBreaker, buildingProperties.getGeoCircuit()));
+                .transformDeferred(webClientErrorHandler.transformWebClientErrorAndDelay(circuitBreaker, buildingProperties.getGeoCircuit()))
+                .onErrorMap(ex -> new GeoIntegrationException("Fetching Geo data failed", ex));
     }
 
 }

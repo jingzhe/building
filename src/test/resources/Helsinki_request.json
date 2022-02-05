@@ -1,0 +1,20 @@
+[
+  {
+    "name": "1",
+    "street": "Simonkatu",
+    "number": 1,
+    "post_code": "00100",
+    "city": "Helsinki",
+    "country": "Finland",
+    "description": "Helsinki1"
+  },
+  {
+    "name": "2",
+    "street": "Simonkatu",
+    "number": 2,
+    "post_code": "00100",
+    "city": "Helsinki",
+    "country": "Finland",
+    "description": "Helsinki2"
+  }
+]

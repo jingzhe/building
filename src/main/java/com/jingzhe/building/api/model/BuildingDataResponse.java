@@ -3,17 +3,18 @@ package com.jingzhe.building.api.model;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.jingzhe.building.model.BuildingInfo;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.SuperBuilder;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.io.Serial;
+import java.io.Serializable;
 
-@EqualsAndHashCode(callSuper = true)
-@SuperBuilder
 @Data
+@Builder
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class BuildingDataResponse extends BuildingDataRequest {
+public class BuildingDataResponse implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8509135620734162066L;
@@ -22,10 +23,30 @@ public class BuildingDataResponse extends BuildingDataRequest {
     String id;
 
     @NotBlank
+    String name;
+
+    @NotBlank
+    String street;
+
+    @Min(1)
+    int number;
+
+    @NotBlank
+    String postCode;
+
+    @NotBlank
+    String city;
+
+    @NotBlank
+    String country;
+
+    @NotBlank
     double longitude;
 
     @NotBlank
     double latitude;
+
+    String description;
 
     public static BuildingDataResponse fromBuildingInfo(BuildingInfo buildingInfo) {
         return BuildingDataResponse.builder()

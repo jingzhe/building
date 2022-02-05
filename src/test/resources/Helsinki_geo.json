@@ -1,0 +1,242 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "city": "Helsinki",
+        "county": "Uusimaa",
+        "state": "Mainland Finland",
+        "country": "Finland",
+        "country_code": "fi",
+        "lon": 24.9427473,
+        "lat": 60.1674881,
+        "formatted": "Helsinki, Uusimaa, Finland",
+        "address_line1": "Helsinki",
+        "address_line2": "Uusimaa, Finland",
+        "category": "administrative",
+        "result_type": "city",
+        "rank": {
+          "importance": 0.8485004519116767,
+          "popularity": 8.677966165017914,
+          "confidence": 1,
+          "confidence_city_level": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "516ee415e357f13840590efc034070154e40f00101f9016288000000000000c00208"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9427473,
+          60.1674881
+        ]
+      },
+      "bbox": [
+        24.7828026,
+        59.922486,
+        25.2545116,
+        60.2978497
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Helsinki",
+        "housenumber": "1",
+        "street": "Kaivokatu",
+        "suburb": "City center",
+        "district": "Southern major district",
+        "city": "Helsinki",
+        "county": "Uusimaa",
+        "state": "Mainland Finland",
+        "postcode": "00100",
+        "country": "Finland",
+        "country_code": "fi",
+        "lon": 24.9413548,
+        "lat": 60.1717794,
+        "formatted": "Kaivokatu 1, 00100 Helsinki, Finland",
+        "address_line1": "Kaivokatu 1",
+        "address_line2": "00100 Helsinki, Finland",
+        "result_type": "amenity",
+        "rank": {
+          "importance": 0.5260144550723668,
+          "popularity": 8.677966165017914,
+          "confidence": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "51c0eecfa0fcf038405931900cdefc154e40f00103f90167b6840100000000c0020192030848656c73696e6b69"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9413548,
+          60.1717794
+        ]
+      },
+      "bbox": [
+        24.9363548,
+        60.1667794,
+        24.9463548,
+        60.1767794
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Helsinki",
+        "city": "Helsinki",
+        "county": "Southwest Finland",
+        "state": "Mainland Finland",
+        "country": "Finland",
+        "country_code": "fi",
+        "village": "Helsinki",
+        "lon": 21.4450425,
+        "lat": 60.6072482,
+        "formatted": "Helsinki, Southwest Finland, Finland",
+        "address_line1": "Helsinki",
+        "address_line2": "Southwest Finland, Finland",
+        "category": "populated_place",
+        "result_type": "city",
+        "rank": {
+          "importance": 0.385,
+          "popularity": 2.0289259788569094,
+          "confidence": 1,
+          "confidence_city_level": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "5180d4264eee7135405906c71b4fba4d4e40f00103f901319eb57601000000c0020892030848656c73696e6b69"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.4450425,
+          60.6072482
+        ]
+      },
+      "bbox": [
+        21.4250425,
+        60.5872482,
+        21.4650425,
+        60.6272482
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Helsinki",
+        "street": "Helsinki",
+        "suburb": "The New North",
+        "city": "Tel Aviv",
+        "county": "Tel Aviv Subdistrict",
+        "state": "Tel Aviv District",
+        "postcode": "6296802",
+        "country": "Israel",
+        "country_code": "il",
+        "lon": 34.7925487,
+        "lat": 32.0861748,
+        "formatted": "Helsinki, 6296802 Tel Aviv, Israel",
+        "address_line1": "Helsinki",
+        "address_line2": "6296802 Tel Aviv, Israel",
+        "result_type": "street",
+        "rank": {
+          "importance": 0.21,
+          "popularity": 7.4332183290460225,
+          "confidence": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "51607e5d3c7265414059a3de9dc6070b4040f00102f901ef65c02800000000c0020492030848656c73696e6b69"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7925487,
+          32.0861748
+        ]
+      },
+      "bbox": [
+        34.7925445,
+        32.0859924,
+        34.7925687,
+        32.0862133
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "datasource": {
+          "sourcename": "openstreetmap",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "Open Database License",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        "name": "Helsinki",
+        "street": "Helsinki",
+        "suburb": "The New North",
+        "city": "Tel Aviv",
+        "county": "Tel Aviv Subdistrict",
+        "state": "Tel Aviv District",
+        "postcode": "6492903",
+        "country": "Israel",
+        "country_code": "il",
+        "lon": 34.792402,
+        "lat": 32.0853927,
+        "formatted": "Helsinki, 6492903 Tel Aviv, Israel",
+        "address_line1": "Helsinki",
+        "address_line2": "6492903 Tel Aviv, Israel",
+        "result_type": "street",
+        "rank": {
+          "importance": 0.21,
+          "popularity": 7.500533435564936,
+          "confidence": 1,
+          "match_type": "full_match"
+        },
+        "place_id": "517ba4c16d6d6541405998e8e225ee0a4040f00102f90102f1123800000000c0020492030848656c73696e6b69"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.792402,
+          32.0853927
+        ]
+      },
+      "bbox": [
+        34.7923727,
+        32.0852839,
+        34.7924379,
+        32.0855265
+      ]
+    }
+  ],
+  "query": {
+    "text": "Helsinki",
+    "parsed": {
+      "city": "helsinki",
+      "expected_type": "unknown"
+    }
+  }
+}

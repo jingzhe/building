@@ -31,16 +31,19 @@ public class BuildingService {
                 .map(BuildingDataResponse::fromBuildingInfo);
     }
 
-    public Flux<BuildingDataResponse> search(BuildingInfo buildingInfo, int limit) {
+    public Flux<BuildingDataResponse> search(BuildingInfo buildingInfo, int limit, int offset) {
         return buildingRepository.findAll(Example.of(buildingInfo))
                 .map(BuildingDataResponse::fromBuildingInfo)
+                .skip(offset)
                 .take(limit);
 
     }
 
     public Mono<BuildingDataResponse> update(String id, BuildingDataRequest building) {
         return buildingRepository.findById(id)
+                .map(orig -> BuildingInfo.fromRequest(building).withId(orig.getId()))
                 .flatMap(geoService::updateGeoData)
+                .flatMap(buildingRepository::save)
                 .map(BuildingDataResponse::fromBuildingInfo)
                 .switchIfEmpty(Mono.error(new BuildingNotFoundException("Updating building failed, building not found:" + id)));
     }

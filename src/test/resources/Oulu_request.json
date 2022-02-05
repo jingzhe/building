@@ -1,0 +1,56 @@
+[
+  {
+    "name": "1",
+    "street": "Ketunkäpälä",
+    "number": 1,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home1"
+  },
+  {
+    "name": "2",
+    "street": "Ketunkäpälä",
+    "number": 2,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home2"
+  },
+  {
+    "name": "3",
+    "street": "Ketunkäpälä",
+    "number": 3,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home3"
+  },
+  {
+    "name": "4",
+    "street": "Ketunkäpälä",
+    "number": 4,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home4"
+  },
+  {
+    "name": "5",
+    "street": "Ketunkäpälä",
+    "number": 5,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home5"
+  },
+  {
+    "name": "6",
+    "street": "Ketunkäpälä",
+    "number": 6,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home6"
+  }
+]

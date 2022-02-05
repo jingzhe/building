@@ -13,6 +13,8 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+import static com.jingzhe.building.utils.BuildingUtils.getOrDefaultInt;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -35,7 +37,7 @@ public class BuildingController implements BuildingEndpoint {
                 .city(city)
                 .country(country)
                 .build();
-        return buildingService.search(buildingInfo, limit);
+        return buildingService.search(buildingInfo, getOrDefaultInt(limit, 100) , getOrDefaultInt(offset, 0));
     }
 
     @Override
@@ -47,4 +49,6 @@ public class BuildingController implements BuildingEndpoint {
     public Mono<Void> delete(String id) {
         return buildingService.delete(id);
     }
+
+
 }
