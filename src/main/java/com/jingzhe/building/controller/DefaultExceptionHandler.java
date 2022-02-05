@@ -2,7 +2,6 @@ package com.jingzhe.building.controller;
 
 import com.jingzhe.building.api.model.ApiError;
 import com.jingzhe.building.exception.GeoIntegrationException;
-import com.jingzhe.building.exception.VerificationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;

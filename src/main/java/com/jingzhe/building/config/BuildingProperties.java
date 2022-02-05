@@ -31,4 +31,6 @@ public class BuildingProperties {
 
     CircuitProperties authCircuit;
 
+    int defaultLimit = 500;
+
 }

@@ -5,9 +5,12 @@ import com.jingzhe.building.api.model.BuildingDataResponse;
 import com.jingzhe.building.model.BuildingInfo;
 import com.jingzhe.building.exception.BuildingNotFoundException;
 import com.jingzhe.building.respository.BuildingRepository;
+import com.jingzhe.building.utils.BuildingUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -31,8 +34,17 @@ public class BuildingService {
                 .map(BuildingDataResponse::fromBuildingInfo);
     }
 
-    public Flux<BuildingDataResponse> search(BuildingInfo buildingInfo, int limit, int offset) {
-        return buildingRepository.findAll(Example.of(buildingInfo))
+    public Flux<BuildingDataResponse> search(BuildingInfo buildingInfo, int limit, int offset, String sortBy, String order) {
+        Sort.Direction direction = order == null ? Sort.Direction.ASC : Sort.Direction.fromString(order);
+        Sort sort = StringUtils.isBlank(sortBy) ? null : Sort.by(direction, sortBy);
+
+        Flux<BuildingInfo> flux;
+        if (sort != null) {
+            flux = buildingRepository.findAll(Example.of(buildingInfo), sort);
+        } else {
+            flux = buildingRepository.findAll(Example.of(buildingInfo));
+        }
+        return flux
                 .map(BuildingDataResponse::fromBuildingInfo)
                 .skip(offset)
                 .take(limit);

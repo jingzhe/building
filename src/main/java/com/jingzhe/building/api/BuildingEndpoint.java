@@ -31,6 +31,8 @@ public interface BuildingEndpoint {
     String QUERY_COUNTRY = "country";
     String QUERY_LIMIT = "limit";
     String QUERY_OFFSET = "offset";
+    String QUERY_SORT_BY = "sort_by";
+    String QUERY_ORDER = "order";
 
     @Operation(
             summary = "Create new buildings",
@@ -92,13 +94,15 @@ public interface BuildingEndpoint {
     )
     @CrossOrigin(allowCredentials = "true", originPatterns = "*")
     Flux<BuildingDataResponse> search(@Parameter(description = "Building name") @RequestParam(required = false, value = QUERY_NAME) String name,
-                              @Parameter(description = "Building street") @RequestParam(required = false, value = QUERY_STREET) String street,
-                              @Parameter(description = "Building number") @RequestParam(required = false, value = QUERY_NUMBER) Integer number,
-                              @Parameter(description = "Building post code") @RequestParam(required = false, value = QUERY_POST_CODE) String postCode,
-                              @Parameter(description = "Building city") @RequestParam(required = false, value = QUERY_CITY) String city,
-                              @Parameter(description = "Building country") @RequestParam(required = false, value = QUERY_COUNTRY) String country,
-                              @Parameter(description = "Search limit") @RequestParam(required = false, value = QUERY_LIMIT) Integer limit,
-                              @Parameter(description = "Search offset") @RequestParam(required = false, value = QUERY_OFFSET) Integer offset);
+                                      @Parameter(description = "Building street") @RequestParam(required = false, value = QUERY_STREET) String street,
+                                      @Parameter(description = "Building number") @RequestParam(required = false, value = QUERY_NUMBER) Integer number,
+                                      @Parameter(description = "Building post code") @RequestParam(required = false, value = QUERY_POST_CODE) String postCode,
+                                      @Parameter(description = "Building city") @RequestParam(required = false, value = QUERY_CITY) String city,
+                                      @Parameter(description = "Building country") @RequestParam(required = false, value = QUERY_COUNTRY) String country,
+                                      @Parameter(description = "Search limit") @RequestParam(required = false, value = QUERY_LIMIT) Integer limit,
+                                      @Parameter(description = "Search offset") @RequestParam(required = false, value = QUERY_OFFSET) Integer offset,
+                                      @Parameter(description = "Sort by") @RequestParam(required = false, value = QUERY_SORT_BY) String sortBy,
+                                      @Parameter(description = "Order") @RequestParam(required = false, value = QUERY_ORDER) String order);
 
 
     @Operation(

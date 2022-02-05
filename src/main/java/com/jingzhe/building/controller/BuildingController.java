@@ -3,8 +3,10 @@ package com.jingzhe.building.controller;
 import com.jingzhe.building.api.BuildingEndpoint;
 import com.jingzhe.building.api.model.BuildingDataRequest;
 import com.jingzhe.building.api.model.BuildingDataResponse;
+import com.jingzhe.building.config.BuildingProperties;
 import com.jingzhe.building.model.BuildingInfo;
 import com.jingzhe.building.service.BuildingService;
+import com.jingzhe.building.utils.BuildingUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import static com.jingzhe.building.utils.BuildingUtils.getOrDefaultInt;
 public class BuildingController implements BuildingEndpoint {
 
     private final BuildingService buildingService;
+    private final BuildingProperties buildingProperties;
 
     @Override
     public Flux<BuildingDataResponse> create(List<BuildingDataRequest> buildings) {
@@ -28,7 +31,9 @@ public class BuildingController implements BuildingEndpoint {
     }
 
     @Override
-    public Flux<BuildingDataResponse> search(String name, String street, Integer number, String postCode, String city, String country, Integer limit, Integer offset) {
+    public Flux<BuildingDataResponse> search(String name, String street, Integer number, String postCode,
+                                             String city, String country, Integer limit, Integer offset,
+                                             String sortBy, String order) {
         BuildingInfo buildingInfo = BuildingInfo.builder()
                 .name(name)
                 .street(street)
@@ -37,7 +42,10 @@ public class BuildingController implements BuildingEndpoint {
                 .city(city)
                 .country(country)
                 .build();
-        return buildingService.search(buildingInfo, getOrDefaultInt(limit, 100) , getOrDefaultInt(offset, 0));
+        BuildingUtils.checkSortByName(buildingInfo, sortBy);
+
+        return buildingService.search(buildingInfo, getOrDefaultInt(limit, buildingProperties.getDefaultLimit()),
+                getOrDefaultInt(offset, 0), sortBy, order);
     }
 
     @Override
