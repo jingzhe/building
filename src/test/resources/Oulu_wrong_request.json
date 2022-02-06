@@ -1,0 +1,19 @@
+[
+  {
+    "street": "Ketunkäpälä",
+    "number": 1,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home1"
+  },
+  {
+    "name": "2",
+    "street": "Ketunkäpälä",
+    "number": 2,
+    "post_code": "90540",
+    "city": "Oulu",
+    "country": "Finland",
+    "description": "Jingzhe's home2"
+  }
+]

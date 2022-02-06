@@ -1,7 +1,19 @@
-# link heroku: heroku git:remote -a hidden-basin-27129
+# Buildings backend
 
-# deploy to Heroku:git push heroku master
+## How to run the service
+Use IntelliJ IDEA to open the project and run the service, or use command line bellow
+### Compile
+```
+mvn compile
+```
+### Start the service
+```
+mvn spring-boot:run
+```
+### Run the test cases
+```
+mvn test
+```
 
-keytool -genkeypair -alias building_auth -keyalg RSA -keypass testpass -storepass storepass -validity 1000 -deststoretype jks -keystore building.jks
-
-keytool -exportcert -keystore building.jks -alias building_auth -rfc -file building_pub.crt
+### OpenApi documentation
+http://localhost:8081/webjars/swagger-ui/index.html

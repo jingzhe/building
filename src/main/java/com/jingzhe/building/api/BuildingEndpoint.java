@@ -54,6 +54,20 @@ public interface BuildingEndpoint {
                                             )
                                     }
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "Internal server error",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiResponse.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Internal error",
+                                                    value = "{\"status\": \"INTERNAL_SERVER_ERROR\", \"message\" : \"Failed to connect to Database\"}"
+                                            )
+                                    }
+                            )
                     )
             }
     )
@@ -85,6 +99,20 @@ public interface BuildingEndpoint {
                                             )
                                     }
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "Internal server error",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiResponse.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Internal error",
+                                                    value = "{\"status\": \"INTERNAL_SERVER_ERROR\", \"message\" : \"Failed to connect to Database\"}"
+                                            )
+                                    }
+                            )
                     )
             }
     )
@@ -104,6 +132,50 @@ public interface BuildingEndpoint {
                                       @Parameter(description = "Sort by") @RequestParam(required = false, value = QUERY_SORT_BY) String sortBy,
                                       @Parameter(description = "Order") @RequestParam(required = false, value = QUERY_ORDER) String order);
 
+    @Operation(
+            summary = "Fetch a building information",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Fetched build data"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Building not found",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiResponse.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Not found",
+                                                    value = "{\"status\": \"NOT_FOUND\", \"message\" : \"Building not found\"}"
+                                            )
+                                    }
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "Internal server error",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiResponse.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Internal error",
+                                                    value = "{\"status\": \"INTERNAL_SERVER_ERROR\", \"message\" : \"Failed to connect to Database\"}"
+                                            )
+                                    }
+                            )
+                    )
+            }
+    )
+    @HeaderApiParams
+    @GetMapping(
+            value = "/{" + BUILDING_ID_PATH_VARIABLE + "}",
+            produces = APPLICATION_JSON_VALUE
+    )
+    @CrossOrigin(allowCredentials = "true", originPatterns = "*")
+    Mono<BuildingDataResponse> getBuilding(@Parameter(required = true, description = "Building ID") @PathVariable(BUILDING_ID_PATH_VARIABLE) String id);
 
     @Operation(
             summary = "Update a building",
@@ -125,6 +197,34 @@ public interface BuildingEndpoint {
                                             )
                                     }
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Building not found",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiResponse.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Not found",
+                                                    value = "{\"status\": \"NOT_FOUND\", \"message\" : \"Building not found\"}"
+                                            )
+                                    }
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "Internal server error",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiResponse.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Internal error",
+                                                    value = "{\"status\": \"INTERNAL_SERVER_ERROR\", \"message\" : \"Failed to connect to Database\"}"
+                                            )
+                                    }
+                            )
                     )
             }
     )
@@ -134,6 +234,7 @@ public interface BuildingEndpoint {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE
     )
+    @CrossOrigin(allowCredentials = "true", originPatterns = "*")
     Mono<BuildingDataResponse> update(@Parameter(required = true, description = "Building ID") @PathVariable(BUILDING_ID_PATH_VARIABLE) String id,
                                      @RequestBody @Valid BuildingDataRequest building);
 
@@ -157,6 +258,20 @@ public interface BuildingEndpoint {
                                             )
                                     }
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "Internal server error",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiResponse.class),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "Internal error",
+                                                    value = "{\"status\": \"INTERNAL_SERVER_ERROR\", \"message\" : \"Failed to connect to Database\"}"
+                                            )
+                                    }
+                            )
                     )
             }
     )
@@ -164,5 +279,6 @@ public interface BuildingEndpoint {
     @DeleteMapping(
             value = "/{" + BUILDING_ID_PATH_VARIABLE + "}"
     )
+    @CrossOrigin(allowCredentials = "true", originPatterns = "*")
     Mono<Void> delete(@Parameter(required = true, description = "Building ID") @PathVariable(BUILDING_ID_PATH_VARIABLE) String id);
 }

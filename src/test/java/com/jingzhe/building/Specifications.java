@@ -42,6 +42,15 @@ public class Specifications {
                 .body(body)
                 .put();
     }
+
+    public Response givenFetchBuildingGet(String id, String accessToken) {
+        return given()
+                .basePath(PATH + "/" + id)
+                .auth()
+                .oauth2(accessToken)
+                .get();
+    }
+
     public Response givenBuildingDelete(String id, String accessToken) {
         return given()
                 .basePath(PATH + "/" + id)
@@ -51,7 +60,7 @@ public class Specifications {
     }
 
     public Response givenSearchBuildingsGet(String name, String street, Integer number, String postCode,
-                                            String city, String country, Integer limit, Integer offset) {
+                                            String city, String country, Integer limit, Integer offset, String sortBy, String order) {
         return given()
                 .basePath(PATH)
                 .auth()
@@ -64,6 +73,8 @@ public class Specifications {
                 .queryParam("country", country)
                 .queryParam("limit", limit)
                 .queryParam("offset", offset)
+                .queryParam("sort_by", sortBy)
+                .queryParam("order", order)
                 .get();
 
     }

@@ -17,15 +17,11 @@ public class GeoData {
     private List<Feature> features;
 
     public double getLongitude() {
-        return getCoordinates().get(0);
+        return features.get(0).properties.lon;
     }
 
     public double getLatitude() {
-        return features.get(0).geometry.coordinates.get(1);
-    }
-
-    private List<Double> getCoordinates() {
-        return features.get(0).geometry.coordinates;
+        return features.get(0).properties.lat;
     }
 
     @Data
@@ -33,14 +29,16 @@ public class GeoData {
     @AllArgsConstructor
     public static class Feature {
         @NotNull
-        private Geometry geometry;
+        private Properties properties;
     }
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Geometry {
-        @Size(min = 2, max = 2, message = "Latitude and Longitude")
-        private List<Double> coordinates;
+    public static class Properties {
+        @NotNull
+        private Double lon;
+        @NotNull
+        private Double lat;
     }
 }

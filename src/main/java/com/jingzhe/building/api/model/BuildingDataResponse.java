@@ -40,10 +40,8 @@ public class BuildingDataResponse implements Serializable {
     @NotBlank
     String country;
 
-    @NotBlank
     double longitude;
 
-    @NotBlank
     double latitude;
 
     String description;

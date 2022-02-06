@@ -4,7 +4,6 @@ import java.io.Serial;
 
 public class BuildingServiceException extends RuntimeException{
 
-
     @Serial
     private static final long serialVersionUID = 5583365247184506468L;
 

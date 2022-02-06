@@ -4,8 +4,6 @@ import com.jingzhe.building.exception.InvalidInputDataException;
 import com.jingzhe.building.model.BuildingInfo;
 import org.apache.commons.lang3.StringUtils;
 
-import java.lang.reflect.Field;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 public class BuildingUtils {
@@ -26,5 +24,9 @@ public class BuildingUtils {
                 .filter(field -> name.replace("_", "").equalsIgnoreCase(field.getName()))
                 .findFirst()
                 .orElseThrow(() -> new InvalidInputDataException("Invalid sort by:" + name));
+    }
+
+    public static String empty2Null(String str) {
+        return StringUtils.isBlank(str) ? null : str;
     }
 }

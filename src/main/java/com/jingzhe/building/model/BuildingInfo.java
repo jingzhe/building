@@ -6,10 +6,13 @@ import com.jingzhe.building.api.model.BuildingDataRequest;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.io.Serial;
 import java.io.Serializable;
 
+@Slf4j
 @Value
 @With
 @Builder
@@ -21,16 +24,22 @@ public class BuildingInfo implements Serializable {
 
     String id;
 
+    @Indexed
     String name;
 
+    @Indexed
     String street;
 
+    @Indexed
     Integer number;
 
+    @Indexed
     String postCode;
 
+    @Indexed
     String city;
 
+    @Indexed
     String country;
 
     String description;
@@ -40,7 +49,7 @@ public class BuildingInfo implements Serializable {
     Double latitude;
 
     public static String getGeoQuery(BuildingInfo building) {
-        return building.getStreet() +
+        String query = building.getStreet() +
                 " " +
                 building.getNumber() +
                 "," +
@@ -49,6 +58,8 @@ public class BuildingInfo implements Serializable {
                 building.getPostCode() +
                 "," +
                 building.getCountry();
+        log.info("Query={}", query);
+        return query;
     }
 
     public static BuildingInfo fromRequest(BuildingDataRequest request) {

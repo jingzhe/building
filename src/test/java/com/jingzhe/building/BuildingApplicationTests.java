@@ -12,7 +12,9 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 
 import static com.jingzhe.building.Stubs.*;
+import static com.jingzhe.building.Utils.setPrecision;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 
@@ -79,7 +81,7 @@ class BuildingApplicationTests extends IntegrationTest {
 		assertEquals(6, list.size());
 
 		List<BuildingDataResponse> foundList1 = Specifications.givenSearchBuildingsGet(null, null, 5,
-						null, "Oulu", null, null, null)
+						null, "Oulu", null, null, null, null, null)
 				.then()
 				.spec(Specifications.expectResponseOk())
 				.extract()
@@ -89,7 +91,7 @@ class BuildingApplicationTests extends IntegrationTest {
 
 
 		List<BuildingDataResponse> foundList2 = Specifications.givenSearchBuildingsGet(null, null, null,
-						null, "Oulu", null, null, null)
+						null, "Oulu", null, null, null, null, null)
 				.then()
 				.spec(Specifications.expectResponseOk())
 				.extract()
@@ -97,12 +99,14 @@ class BuildingApplicationTests extends IntegrationTest {
 		assertEquals(6, foundList2.size());
 
 		List<BuildingDataResponse> foundList3 = Specifications.givenSearchBuildingsGet(null, null, null,
-						null, "Oulu", null, 3, 2)
+						null, "Oulu", null, 3, 2, "name", "desc")
 				.then()
 				.spec(Specifications.expectResponseOk())
 				.extract()
 				.jsonPath().getList(".", BuildingDataResponse.class);
 		assertEquals(3, foundList3.size());
+		BuildingDataResponse first = foundList3.get(0);
+		assertEquals("4", first.getName());
 
 
 		list.forEach(item -> buildingRepository.deleteById(item.getId()).block());
@@ -110,6 +114,36 @@ class BuildingApplicationTests extends IntegrationTest {
 
 	@Test
 	void updateHelsinkiBuildings_withGoodAccessToken_succeedTest() {
+		stubForJwks();
+		stubForGeoData("Helsinki");
+		stubForGeoData("Oulu");
+
+		String input = Specifications.readFile("Helsinki_request.json");
+		List<BuildingDataResponse> list = Specifications.givenCreateBuildingsPost(input, Specifications.GOOD_ACCESS_TOKEN)
+				.then()
+				.spec(Specifications.expectResponseOk())
+				.extract()
+				.jsonPath().getList(".", BuildingDataResponse.class);
+
+		assertEquals(2, list.size());
+
+		BuildingDataResponse orig = list.get(0);
+		String updatedInput = Specifications.readFile("Oulu_update_request.json");
+		BuildingDataResponse updated = Specifications.givenUpdateBuildingPut(orig.getId(), updatedInput, Specifications.GOOD_ACCESS_TOKEN)
+				.then()
+				.spec(Specifications.expectResponseOk())
+				.extract()
+				.as(BuildingDataResponse.class);
+
+		assertEquals("Isokatu", updated.getStreet());
+		assertNotEquals(setPrecision(orig.getLatitude()), setPrecision(updated.getLatitude()));
+		assertNotEquals(setPrecision(orig.getLongitude()), setPrecision(updated.getLongitude()));
+
+		list.forEach(item -> buildingRepository.deleteById(item.getId()).block());
+	}
+
+	@Test
+	void fetchHelsinkiBuildings_withGoodAccessToken_succeedTest() {
 		stubForJwks();
 		stubForGeoData("Helsinki");
 
@@ -123,16 +157,15 @@ class BuildingApplicationTests extends IntegrationTest {
 		assertEquals(2, list.size());
 
 		BuildingDataResponse orig = list.get(0);
-		String updatedInput = Specifications.readFile("Helsinki_update_request.json");
-		BuildingDataResponse updated = Specifications.givenUpdateBuildingPut(orig.getId(), updatedInput, Specifications.GOOD_ACCESS_TOKEN)
+		BuildingDataResponse fetched = Specifications.givenFetchBuildingGet(orig.getId(), Specifications.GOOD_ACCESS_TOKEN)
 				.then()
 				.spec(Specifications.expectResponseOk())
 				.extract()
 				.as(BuildingDataResponse.class);
 
-		assertEquals("Isokatu", updated.getStreet());
-		assertNotEquals(orig.getLatitude(), updated.getLatitude());
-		assertNotEquals(orig.getLongitude(), updated.getLongitude());
+		assertEquals(orig.getStreet(), fetched.getStreet());
+		assertEquals(setPrecision(orig.getLatitude()), setPrecision(fetched.getLatitude()));
+		assertEquals(setPrecision(orig.getLongitude()), setPrecision(fetched.getLongitude()));
 
 		list.forEach(item -> buildingRepository.deleteById(item.getId()).block());
 	}
@@ -175,6 +208,16 @@ class BuildingApplicationTests extends IntegrationTest {
 	}
 
 	@Test
+	void createBuildings_withWrongRequest_errorTest() {
+		stubForJwks();
+
+		String input = Specifications.readFile("Oulu_wrong_request.json");
+		Specifications.givenCreateBuildingsPost(input, Specifications.GOOD_ACCESS_TOKEN)
+				.then()
+				.spec(Specifications.expect(400, BAD_REQUEST.name()));
+	}
+
+	@Test
 	void createBuildings_geoFailed_errorTest() {
 		stubForJwks();
 		stubForGeoDataWithStatus(400);
@@ -185,4 +228,13 @@ class BuildingApplicationTests extends IntegrationTest {
 				.spec(Specifications.expect(500, INTERNAL_SERVER_ERROR.name()));
 	}
 
+	@Test
+	void searchWrongSortBy_failedTest() {
+		stubForJwks();
+
+		Specifications.givenSearchBuildingsGet(null, null, 5,
+						null, "Oulu", null, null, null, "wrong", null)
+				.then()
+				.spec(Specifications.expect(400, BAD_REQUEST.name()));
+	}
 }

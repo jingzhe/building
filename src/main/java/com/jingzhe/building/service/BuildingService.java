@@ -5,7 +5,6 @@ import com.jingzhe.building.api.model.BuildingDataResponse;
 import com.jingzhe.building.model.BuildingInfo;
 import com.jingzhe.building.exception.BuildingNotFoundException;
 import com.jingzhe.building.respository.BuildingRepository;
-import com.jingzhe.building.utils.BuildingUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +30,9 @@ public class BuildingService {
 
         return Flux.fromIterable(buildingMonos)
                 .flatMap(buildingRepository::saveAll)
-                .map(BuildingDataResponse::fromBuildingInfo);
+                .doOnNext(info -> log.info(String.valueOf(info.getLatitude())))
+                .map(BuildingDataResponse::fromBuildingInfo)
+                .doOnNext(res -> log.info(String.valueOf(res.getLatitude())));
     }
 
     public Flux<BuildingDataResponse> search(BuildingInfo buildingInfo, int limit, int offset, String sortBy, String order) {
@@ -49,6 +50,12 @@ public class BuildingService {
                 .skip(offset)
                 .take(limit);
 
+    }
+
+    public Mono<BuildingDataResponse> getBuilding(String id) {
+        return buildingRepository.findById(id)
+                .map(BuildingDataResponse::fromBuildingInfo)
+                .switchIfEmpty(Mono.error(new BuildingNotFoundException("Updating building failed, building not found:" + id)));
     }
 
     public Mono<BuildingDataResponse> update(String id, BuildingDataRequest building) {
