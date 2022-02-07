@@ -1,0 +1,21 @@
+version: "3"
+services:
+  authentication-service:
+    image: jingzheyu/authentication
+    container_name: authentication
+    networks:
+      - micro-service-network
+    ports:
+      - "8082:8082"
+
+  building-service:
+    image: jingzheyu/building
+    container_name: building
+    networks:
+      - micro-service-network
+    ports:
+      - "8081:8081"
+    environment:
+      - building.auth-base-url=http://authentication-service:8082
+networks:
+  micro-service-network:

@@ -27,9 +27,10 @@ mvn package
 ```
 docker build -t jingzheyu/building .
 ```
-### Run the Docker container
+### Run the Docker container with docker-compose together with Authentication service
 ```
-docker run -p 8081:8081 jingzheyu/building
+docker-compose up
+```
 
 ## Feature
 Circuit breaker support
