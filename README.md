@@ -35,3 +35,4 @@ docker run -p 8081:8081 jingzheyu/building
 Circuit breaker support
 Bearer token used in security
 MongoDB hosted in Atlas
+Cached JWKs, don't need to fetch the key everytime from authentication server
