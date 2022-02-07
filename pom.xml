@@ -89,7 +89,7 @@
 	</dependencies>
 	<!-- Spring boot maven plugin to create executable JAR -->
 	<build>
-		<finalName>opening-hours</finalName>
+		<finalName>building</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
